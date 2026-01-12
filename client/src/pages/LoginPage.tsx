@@ -31,22 +31,26 @@ const LoginPage = () => {
           {/* Logo */}
           <div className="mb-8 p-6 bg-sidebar-accent/50 backdrop-blur-sm rounded-2xl border border-sidebar-border shadow-xl">
             <div className="p-4">
-              <img src="/logo.png" alt="Fardar Express Logo" className="w-32 h-32 object-contain" />
+              <img
+                src="/logo.jpg"
+                alt=" Company Logo"
+                className="w-32 h-32 object-contain"
+              />
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-4 tracking-tight">
-            Fardar Express
-          </h1>
+          <h1 className="text-4xl font-bold mb-4 tracking-tight">Company</h1>
           <p className="text-xl text-sidebar-foreground/80 mb-12 max-w-md font-light">
-            Domestic Inventory Management System
+            Inventory Management System
           </p>
 
           {/* Feature Grid */}
           <div className="grid grid-cols-3 gap-6 w-full max-w-lg">
             <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-sidebar-accent/30 border border-sidebar-border/50 backdrop-blur-sm">
               <Package className="w-6 h-6 text-blue-400" />
-              <span className="text-xs font-medium opacity-80">Stock Tracking</span>
+              <span className="text-xs font-medium opacity-80">
+                Stock Tracking
+              </span>
             </div>
             <div className="flex flex-col items-center gap-3 p-4 rounded-xl bg-sidebar-accent/30 border border-sidebar-border/50 backdrop-blur-sm">
               <Warehouse className="w-6 h-6 text-purple-400" />
@@ -58,10 +62,10 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Footer Text */}
         <div className="absolute bottom-8 text-xs text-sidebar-foreground/40">
-          © 2024 Fardar Express. All rights reserved.
+          © 2024 Company. All rights reserved.
         </div>
       </div>
 
@@ -71,10 +75,16 @@ const LoginPage = () => {
           <div className="text-center lg:text-left">
             <div className="lg:hidden flex justify-center mb-6">
               <div className="p-3 inline-block">
-                <img src="/logo.png" alt="Fardar Express Logo" className="w-16 h-16 object-contain" />
+                <img
+                  src="/logo.jpg"
+                  alt=" Company Logo"
+                  className="w-16 h-16 object-contain"
+                />
               </div>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Welcome back</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
+              Welcome back
+            </h2>
             <p className="mt-2 text-muted-foreground">
               Please enter your details to sign in
             </p>
@@ -114,7 +124,11 @@ const LoginPage = () => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </div>

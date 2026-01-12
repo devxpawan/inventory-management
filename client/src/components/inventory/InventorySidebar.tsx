@@ -1,41 +1,40 @@
 // View Component - Sidebar Navigation
 import { NavLink } from "@/components/NavLink";
 import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    useSidebar,
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { useLogout } from "@/controllers/useAuth";
 import { useInventoryController } from "@/controllers/useInventoryController";
 import {
-    Activity,
-    ArrowRightLeft,
-    ClipboardList,
-    Clock,
-
-    FolderOpen,
-    LayoutDashboard,
-    LogOut,
-    Package,
-    User,
-    UserPlus
+  Activity,
+  ArrowRightLeft,
+  ClipboardList,
+  Clock,
+  FolderOpen,
+  LayoutDashboard,
+  LogOut,
+  Package,
+  User,
+  UserPlus,
 } from "lucide-react";
 
 const navigationItems = [
@@ -57,7 +56,6 @@ const navigationItems = [
     icon: ClipboardList,
   },
   { title: "Categories", url: "/categories", icon: FolderOpen },
-
 ];
 
 export function InventorySidebar() {
@@ -72,25 +70,39 @@ export function InventorySidebar() {
 
   // Get initials for avatar
   const getInitials = (username: string) => {
-    return username
-      ?.split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2) || "U";
+    return (
+      username
+        ?.split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2) || "U"
+    );
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-sidebar-border bg-sidebar">
+    <Sidebar
+      collapsible="icon"
+      className="border-r border-sidebar-border bg-sidebar"
+    >
       <SidebarContent className="flex flex-col h-full">
         {/* Logo/Brand Section */}
-        <div className={`relative border-b border-sidebar-border/50 bg-gradient-to-br from-sidebar-accent/30 to-transparent transition-all duration-300 ${!open ? "px-3 py-4" : "px-4 py-6"}`}>
+        <div
+          className={`relative border-b border-sidebar-border/50 bg-gradient-to-br from-sidebar-accent/30 to-transparent transition-all duration-300 ${
+            !open ? "px-3 py-4" : "px-4 py-6"
+          }`}
+        >
           {/* Decorative gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-          
-          <div className={`relative flex items-center gap-3 group ${!open ? "justify-center" : ""}`}>
+
+          <div
+            className={`relative flex items-center gap-3 group ${
+              !open ? "justify-center" : ""
+            }`}
+          >
             {/* Logo Container with subtle enhancements */}
-            <div className={`
+            <div
+              className={`
               flex items-center justify-center rounded-xl
               bg-sidebar-accent/40
               shadow-md
@@ -99,22 +111,24 @@ export function InventorySidebar() {
               group-hover:shadow-lg
               group-hover:scale-105
               relative overflow-hidden
-            `}>
-              
-              <img 
-                src="/logo.png" 
-                alt="Fardar Express Logo" 
-                className={`object-contain relative z-10 ${open ? "h-10 w-10" : "h-9 w-9"} transition-all duration-300`} 
+            `}
+            >
+              <img
+                src="/logo.jpg"
+                alt="Company Logo"
+                className={`object-contain relative z-10 ${
+                  open ? "h-10 w-10" : "h-9 w-9"
+                } transition-all duration-300`}
               />
             </div>
-            
+
             {/* Brand Text */}
             {open && (
               <div className="flex flex-col animate-in fade-in slide-in-from-left-2 duration-300">
                 <h2 className="font-bold text-lg text-sidebar-foreground leading-tight tracking-tight bg-gradient-to-r from-sidebar-foreground to-sidebar-foreground/80 bg-clip-text ">
-                  Fardar Express
+                  Company
                 </h2>
-                <span className=" text-center">Domestic</span>
+                <span className=" text-center">Name</span>
               </div>
             )}
           </div>
@@ -182,16 +196,24 @@ export function InventorySidebar() {
             <SidebarMenu>
               {/* User Profile */}
               <SidebarMenuItem>
-                <div className={`flex items-center gap-3 p-2 rounded-lg transition-all ${!open ? "justify-center" : ""}`}>
-                  <div className={`
+                <div
+                  className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
+                    !open ? "justify-center" : ""
+                  }`}
+                >
+                  <div
+                    className={`
                     flex items-center justify-center rounded-full 
                     bg-gradient-to-br from-blue-600 to-indigo-600 
                     text-white font-bold shadow-sm 
                     ${open ? "w-9 h-9" : "w-8 h-8"} 
                     ring-2 ring-background
-                  `}>
+                  `}
+                  >
                     {open ? (
-                      <span className="text-xs">{getInitials(userInfo?.username)}</span>
+                      <span className="text-xs">
+                        {getInitials(userInfo?.username)}
+                      </span>
                     ) : (
                       <User className="h-4 w-4" />
                     )}
@@ -215,7 +237,7 @@ export function InventorySidebar() {
               <SidebarMenuItem>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <SidebarMenuButton 
+                    <SidebarMenuButton
                       className={`
                         w-full flex items-center gap-2 
                         text-muted-foreground hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 
@@ -225,19 +247,22 @@ export function InventorySidebar() {
                       tooltip={!open ? "Log Out" : undefined}
                     >
                       <LogOut className="h-4 w-4 transition-transform group-hover:scale-110" />
-                      {open && <span className="text-sm font-medium">Log Out</span>}
+                      {open && (
+                        <span className="text-sm font-medium">Log Out</span>
+                      )}
                     </SidebarMenuButton>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
                       <AlertDialogTitle>Confirm Logout</AlertDialogTitle>
                       <AlertDialogDescription>
-                        Are you sure you want to log out? You'll need to sign in again to access your account.
+                        Are you sure you want to log out? You'll need to sign in
+                        again to access your account.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction 
+                      <AlertDialogAction
                         onClick={logout}
                         className="bg-red-600 hover:bg-red-700 text-white"
                       >
