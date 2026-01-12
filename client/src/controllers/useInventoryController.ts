@@ -25,7 +25,8 @@ async function api(endpoint: string, method: string = 'GET', data?: any) {
     config.body = JSON.stringify(data);
   }
 
-  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}${endpoint}`, config);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+  const response = await fetch(`${baseUrl}/api${endpoint}`, config);
 
   if (response.status === 401) {
     localStorage.removeItem('userInfo');
