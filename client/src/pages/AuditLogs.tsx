@@ -65,7 +65,7 @@ export default function AuditLogs() {
     queryKey: ['auditLogs'],
     queryFn: async () => {
       const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/transactions/audit-logs`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/transactions/audit-logs`, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
         },
@@ -79,7 +79,7 @@ export default function AuditLogs() {
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
       const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/transactions/audit-logs/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/transactions/audit-logs/${id}`, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
         },

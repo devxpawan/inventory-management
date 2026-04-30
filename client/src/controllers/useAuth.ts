@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/users`;
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/users`;
 
 export const useLogin = () => {
   const navigate = useNavigate();

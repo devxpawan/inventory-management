@@ -60,15 +60,22 @@
    - Set up your MongoDB URI and JWT secret in the server's config.
 
 4. **Run the development servers:**
-   - Start the backend:
-     ```sh
-     npm run dev
-     ```
-   - Start the frontend (in a new terminal):
-     ```sh
-     cd ../client
-     npm run dev
-     ```
+    - Start the backend:
+      ```sh
+      npm run dev
+      ```
+    - Start the frontend (in a new terminal):
+      ```sh
+      cd ../client
+      npm run dev
+      ```
+
+## Test User
+
+For testing purposes, you can use the following credentials:
+
+- **Username:** admin
+- **Password:** 12345678
 
 ## Folder Structure
 

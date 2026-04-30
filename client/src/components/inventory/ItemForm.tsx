@@ -197,7 +197,7 @@ export function ItemForm({ item, categories, existingItems = [], onSubmit, onSub
 
         try {
           const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-          const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/inventory/upload-invoice`, formDataToSend, {
+          const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/inventory/upload-invoice`, formDataToSend, {
             headers: {
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${userInfo.token}`,

@@ -25,7 +25,7 @@ export default function Dashboard() {
         try {
           const token = userInfo?.token;
           const response = await fetch(
-            `${import.meta.env.VITE_API_BASE_URL}/users/subadmin-count`,
+            `${import.meta.env.VITE_API_BASE_URL}/api/users/subadmin-count`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -41,8 +41,12 @@ export default function Dashboard() {
           }
 
           if (response.ok) {
-            const data = await response.json();
-            setSubAdminCount(data.count);
+            try {
+              const data = await response.json();
+              setSubAdminCount(data.count);
+            } catch {
+              console.error("Failed to parse response as JSON");
+            }
           }
         } catch (error) {
           console.error("Error fetching sub-admin count:", error);

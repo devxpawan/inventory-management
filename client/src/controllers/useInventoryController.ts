@@ -35,11 +35,19 @@ async function api(endpoint: string, method: string = 'GET', data?: any) {
   }
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.message || 'Something went wrong');
+    let errorMessage = 'Something went wrong';
+    try {
+      const errorData = await response.json();
+      errorMessage = errorData.message || errorMessage;
+    } catch {
+      errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+    }
+    throw new Error(errorMessage);
   }
 
-  return response.json();
+  return response.json().catch(() => {
+    throw new Error('Failed to parse response');
+  });
 }
 
 export const useInventoryController = () => {
